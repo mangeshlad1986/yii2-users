@@ -1,4 +1,4 @@
-namespace app\modules\users-module;
+namespace yii2-users;
 
 class Module extends \yii\base\Module
 {
@@ -10,7 +10,7 @@ class Module extends \yii\base\Module
 
        // For commands
        if (Yii::$app instanceof \yii\console\Application) {
-        $this->controllerNamespace = 'app\modules\users-module\commands';
+        $this->controllerNamespace = 'yii2-users\commands';
        }
     }
 }

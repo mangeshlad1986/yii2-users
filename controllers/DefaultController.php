@@ -1,4 +1,4 @@
-namespace app\modules\yii2-users\controllers;
+namespace yii2-users\controllers;
 
 use yii\web\Controller;
 

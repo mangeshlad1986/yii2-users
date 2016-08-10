@@ -1,0 +1,16 @@
+{
+    "name": "gaikwad411/tamarind",
+    "description": "Yii2 Users module",
+    "require": {
+        "yiisoft/yii2": "^2.0.0",
+        "yiisoft/yii2-bootstrap": "^2.0.0"
+    },
+    "license": "GPL3",
+    "authors": [
+        {
+            "name": "Sachin Gaikwad",
+            "email": "gaikwad411@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}

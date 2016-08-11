@@ -10,7 +10,7 @@ class Module extends \yii\base\Module
     	\Yii::configure($this, require(__DIR__ . '/config.php'));
 
        // For commands
-       if (Yii::$app instanceof \yii\console\Application) {
+       if (\Yii::$app instanceof \yii\console\Application) {
         $this->controllerNamespace = 'tamarind\commands';
        }
     }

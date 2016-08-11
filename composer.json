@@ -1,5 +1,6 @@
 {
     "name": "gaikwad411/tamarind",
+    "version" : "0.0.1-dev"
     "description": "Yii2 Users module",
     "require": {
         "yiisoft/yii2": "^2.0.0",

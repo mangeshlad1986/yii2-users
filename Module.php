@@ -1,5 +1,5 @@
 <?php
-namespace tamarind;
+namespace gaikwad411\tamarind;
 
 class Module extends \yii\base\Module
 {

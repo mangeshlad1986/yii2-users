@@ -1,5 +1,5 @@
 <?php
-namespace \mas\yii2users;
+namespace mas\yii2users;
 
 class Module extends \yii\base\Module
 {

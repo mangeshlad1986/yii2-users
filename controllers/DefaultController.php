@@ -7,6 +7,6 @@ class DefaultController extends Controller
 {
     // ...
     public function actionIndex(){
-		echo 'Test';
+		return $this->render('index');
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace gaikwad411\tamarind\controllers;
+namespace \mas\yii2users\controllers;
 
 use yii\web\Controller;
 

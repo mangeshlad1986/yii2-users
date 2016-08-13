@@ -76,7 +76,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Login action.
+     * Register action.
      *
      * @return string
      */

@@ -15,8 +15,7 @@ use Yii;
  * @property string $access_token
  */
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
-{    
-    const SCENARIO_REGISTER = 'register';
+{        
     
     /**
      * @inheritdoc
@@ -54,26 +53,24 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'auth_key' => 'Auth Key',
             'access_token' => 'Access Token',
         ];
-    }
+    }   
 
-    public function scenarios()
+    /**
+     * Generates "remember me" authentication key
+     */
+    public function generateAuthKey()
     {
-        return [            
-            self::SCENARIO_REGISTER => ['username', 'email', 'password'],
-        ];
+        $this->auth_key = Yii::$app->security->generateRandomString();
     }
 
-    public function beforeSave($insert)
-    {        
-        if (parent::beforeSave($insert)) {
-            if ($this->isNewRecord) {
-                $this->auth_key = \Yii::$app->security->generateRandomString();
-                $this->password = Yii::$app->getSecurity()
-                    ->generatePasswordHash($this->password);
-            }
-            return true;
-        }
-        return false;
+    /**
+     * Generates password hash from password and sets it to the model
+     *
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = Yii::$app->security->generatePasswordHash($password);
     }
     
     /**

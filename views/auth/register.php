@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
+    <p>Please fill out the following fields to register:</p>
 
     <?php $form = ActiveForm::begin([
         'id' => 'registration-form',
@@ -21,6 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'fieldConfig' => [
             'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
             'labelOptions' => ['class' => 'col-lg-1 control-label'],
+            'enableAjaxValidation' => true,
         ],
     ]); ?>
 
@@ -29,6 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
         <?= $form->field($model, 'password')->passwordInput() ?>
+
+        <?= $form->field($model, 'password_repeat')->passwordInput() ?>
        
 
         <div class="form-group">

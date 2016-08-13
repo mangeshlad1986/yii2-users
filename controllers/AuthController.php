@@ -7,7 +7,9 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use mas\yii2users\models\LoginForm;
-use mas\yii2users\models\User;
+use mas\yii2users\models\RegistrationForm;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 class AuthController extends Controller
 {
@@ -80,17 +82,22 @@ class AuthController extends Controller
      */
     public function actionRegister()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+        $model = new RegistrationForm();
+
+        // For ajax validations
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
         }
 
-        $model = new User;
-        $model->scenario = User::SCENARIO_REGISTER;
-        
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            \Yii::$app->getSession()->setFlash('success', 'Your account created sucessfuly.');
-            return $this->goBack();
+        if ($model->load(Yii::$app->request->post())) {            
+            if ($user = $model->Register()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
         }
+        
         return $this->render('register', [
             'model' => $model,
         ]);
